@@ -11,7 +11,7 @@ namespace Contract.Intimex.Areas.Contract.Controllers
         //
         // GET: /Contract/Intimex/
 
-        public ActionResult Intimex()
+        public ActionResult Index()
         {
             return View();
         }

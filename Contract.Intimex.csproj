@@ -186,7 +186,7 @@
     <Content Include="Areas\Contract\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Contract\Views\Intimex\Intimex.cshtml" />
+    <Content Include="Areas\Contract\Views\Intimex\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
