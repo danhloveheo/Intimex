@@ -3,16 +3,202 @@
   <head>
     <title>Ajax Api call by jQuery</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap-reset.css" rel="stylesheet" />
 	    <link href="all.css" rel="stylesheet" />
      <link href="all-custom.css" rel="stylesheet" />
     <link href="UC_Controls-3.0.css" rel="stylesheet" />
+
 	  <script src="jszip.min.js"></script>
     <script src="jquery.min.js"></script>
     <script src="kendo.all.min.js"></script>
     <script src="MultiSelect.js"></script>
 	  <script src="Intimex.js"></script>
     
-   
+      <style>
+        .text-blue {
+            color: #007bff;
+        }
+
+        .myTextBox {
+            height: 35px;
+            width: 90px;
+            position: relative;
+            border: 2px solid #cdcdcd;
+            border-color: rgba(0, 0, 0, .14);
+            background-color: whitesmoke;
+            font-size: 16px;
+        }
+
+        .myNav {
+            overflow: hidden;
+            background-color: #206a5d;
+            height: 50px;
+        }
+
+            .myNav a {
+                float: left;
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 19px;
+                font-family: Arial;
+                font-weight: bold;
+            }
+
+            .myNav p {
+                float: right;
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                font-family: Arial;
+                font-weight: bold;
+            }
+
+        .tbFilter tr > td:first-child + td + td + td + td {
+            text-align: right;
+            padding-left: 10px;
+            padding-right: 10px;
+            vertical-align: middle;
+            font-weight: bold;
+        }
+
+        a {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .ngay {
+            padding: 0 0 10px 0;
+            margin-left: -14px;
+        }
+
+        .card-header-fsafe {
+            background-color: rgb(233 236 239);
+        }
+
+        .table-responsive-fsafe {
+            border-top: 1px solid rgb(23 199 199);
+        }
+
+        .color-fsafe {
+            color: #17a2b8 !important;
+        }
+    </style>
+    <style>
+        /*.form-group {
+            margin-bottom: 0.2rem !important;
+        }*/
+
+        .form-control {
+            color: black !important;
+            font-size: 2rem !important;
+        }
+
+        .col-form-label {
+            font-weight: 500 !important;
+        }
+
+        .k-state-disabled {
+            opacity: 1;
+        }
+
+        .form-control {
+            height: 29px !important;
+        }
+
+        .container-fluid,
+        .container-fluid input {
+            font-size: 100% !important;
+        }
+
+        .k-widget.form-control .k-input {
+            height: 29px !important;
+            font-size: 100% !important;
+        }
+
+        .k-card {
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .k-card-header {
+            padding: 0.4rem 0.8rem !important;
+        }
+
+        .form-group {
+            margin-bottom: 0 !important;
+        }
+
+        .tbFilter tr {
+            height: 29px !important;
+        }
+
+        .bg-card-header-01 {
+            background-color: #3ca18f !important;
+        }
+
+        .bg-card-header-02 {
+            background-color: #2196f3 !important;
+        }
+
+        .k-card-subtitle {
+            color: #fff !important;
+        }
+
+        .dropdown-changed, input-changed:focus {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .input-changed, input-changed:focus {
+            border: 1px solid #e84512 !important;
+            font-style: italic !important;
+            box-shadow: none !important;
+        }
+
+        .m--5 {
+            margin: -10px;
+        }
+
+        .ml-15 {
+            margin-left: 15px;
+        }
+
+        .my-custom-scrollbar {
+            position: relative;
+            height: 200px;
+            overflow: auto;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+
+        #ddlPage-list {
+            min-width: 70px !important;
+        }
+
+        .table-loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background: #000000;
+            opacity: 0.5;
+        }
+
+        .table-loading-inner {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
   </head>
   <body>
  <div id="tabstrip">
@@ -54,14 +240,15 @@
                 <td></td>
                 <td>
             
-                     <button class="k-button btnAction k-primary" style="width: 150px" id="btnViewReport" >Xem báo cáo</button>
+                     <button class="k-button btnAction k-primary" style="width: 125px" id="btnViewReport" >Xem báo cáo</button>
+                     <button class="k-button btnAction k-primary" style="width: 125px" id="btnInsertReport" >Nhập báo cáo</button>
                 </td>  
             </tr>
         </table>
     </div>
 
     <div>
-        <label id="lblReportAssign" class="reportTitle">PHÂN CÔNG TUYẾN ĐƯỜNG</label>
+        <label id="lblReport" class="reportTitle">BÁO CÁO TỔNG HỢP</label>
         <div class="ViewLoader1" style="position: absolute; background-color: white; width: 100%; height: 565px; opacity: 0.9; z-index: 1000; display: none">
             <div class="spinner" style="margin-left: 67em; margin-top: 10em;">
                 <div class="rect1"></div>
@@ -71,14 +258,13 @@
                 <div class="rect5"></div>
             </div>
         </div>
-        <button class="k-button btnAction k-primary" style="width: 150px;height:35px" id="btnUpdateAssignRoute">Cập nhật</button><br />
-        <div id="gridAssign" ></div>
+     
+        <div id="gridReport" ></div>
     </div>
 
-      <div>
-        <label id="lblReport" class="reportTitle">BÁO CÁO TUYẾN ĐƯỜNG</label>
-        <div class="ViewLoader2" style="position: absolute; background-color: white; width: 100%; height: 565px; opacity: 0.9; z-index: 1000; display: none">
-            <div class="spinner" style="margin-left: 67em; margin-top: 10em;">
+    <div>
+        <div class="ViewLoader" style="position: absolute; background-color: white; width: 100%; height: 600px; opacity: 0.9; z-index: 1000; display: none">
+            <div class="spinner" style="margin-left: 47%; margin-top: 10em;">
                 <div class="rect1"></div>
                 <div class="rect2"></div>
                 <div class="rect3"></div>
@@ -86,9 +272,736 @@
                 <div class="rect5"></div>
             </div>
         </div>
-     
-           <input class="btnExportExcel" id="btnexp" type="button" title="Xuất Excel" onclick="ExportExcelReport()" />
-        <div id="gridReport" ></div>
+        <div class="container-fluid" id="lbPTTB">
+            <label class="reportTitle">CHI TIẾT TÌNH TRẠNG HỢP ĐỒNG</label>
+            <div class="row">
+                <div class="col">
+                    <div class="k-card">
+                        <div class="k-card-header bg-card-header-01">
+                            <h6 class="k-card-subtitle"
+                                style="cursor: pointer"
+                                data-toggle="collapse"
+                                data-target=".multi-collapse"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="multiCollapseContract multiCollapseGeneral">
+                                Thông tin hợp đồng
+                            </h6>
+                        </div>
+                        <div class="k-card-body collapse multi-collapse show"
+                             id="multiCollapseContract">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="txtLocationCode"
+                                           class="col-sm-3 col-form-label">
+                                        Loại vip
+                                      
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtTypeVip" />
+                                    </div>
+                                    <label for="txtSubscriptionType"
+                                           class="col-sm-2 col-form-label">
+                                        Ghi chú
+                                    </label>
+                                    <div class="col-sm-4 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtNoteVip" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtLocationCode"
+                                           class="col-sm-3 col-form-label">
+                                        Vùng miền
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtLocationCode" />
+                                    </div>
+                                    <label for="txtSubscriptionType"
+                                           class="col-sm-2 col-form-label">
+                                        Loại thuê bao
+                                    </label>
+                                    <div class="col-sm-4 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtSubscriptionType" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6" style="font-size: 11px;">
+                                        <a href="#" id="lkBandwidthPlanning" target="_blank" style="color: red !important;">QUI HOẠCH BĂNG THÔNG 2019</a>
+                                    </div>
+                                    <div class="col-sm-6" id="divWarning">
+                                    </div>
+                                </div>
+                              
+                                <div class="form-group row">
+                                    <label for="txtContract" class="col-sm-3 col-form-label">Số HĐ</label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtContract" />
+                                    </div>
+                                    <label for="dtContract" class="col-sm-2 col-form-label">Ngày HĐ</label>
+                                    <div class="col-sm-4 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="dtContract" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtParentContract" class="col-sm-3 col-form-label">Số HĐ cha</label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text" readonly="true"
+                                               class="form-control"
+                                               id="txtParentContract" />
+                                    </div>
+                                    <label for="txtName1" class="col-sm-2 col-form-label">Tên truy nhập</label>
+                                    <div class="col-sm-4 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtName1" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lblRadius" id="lblRadius" style="color: red" class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-3">
+                                        <a href="#" target="_blank" id="lkCombo"></a>
+                                    </div>
+                                    <div class="col-sm-3" id="divCSKHInformation" style="display: none;">
+                                        <a href="#" id="lkCSKHInformation" target="_blank">Thông tin CSKH</a>
+                                    </div>
+                                    <label for="lblUpgradeLuxury" id="lblUpgradeLuxury" style="color: red" class="col-sm-3 col-form-label"></label>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtFullname" class="col-sm-3 col-form-label">Tên đầy đủ</label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtFullname" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="ddlStatus" class="col-sm-3 col-form-label" id="lblStatus">Tình trạng</label>
+                                    <div class="col-sm-5">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="ddlStatus" />
+                                    </div>
+                                    <div class="col-sm-4 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtSuspend_Date" />
+                                    </div>
+                                </div>
+                                <div class="form-group row divStatus" style="display: none">
+                                    <label class="col-sm-3 col-form-label">Lý do</label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtSuspend_Reason" />
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="display: none" id="divCancelStatus">
+                                    <label class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtStatus" />
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="display: none; color: red" id="divFOResult">
+                                    <label class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtFOResult" />
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="display: none; color: red" id="divFOSetup">
+                                    <label class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtFOSetup" />
+                                    </div>
+                                </div>
+                             
+                                <div class="form-group row clkmcombo">
+                                    <label for="txtPromotionProgramComboInternet"
+                                           class="col-sm-3 col-form-label">
+                                        CLKM internet combo
+                                    </label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtPromotionProgramComboInternet" />
+                                    </div>
+                                </div>
+                                <div class="form-group row clkmcombo">
+                                    <label for="txtPromotionProgramComboPayTV"
+                                           class="col-sm-3 col-form-label">
+                                        CLKM PayTV
+                                    </label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtPromotionProgramComboPayTV" />
+                                    </div>
+                                </div>
+                                <div class="form-group row clkmcombo">
+                                    <label for="ddlPromotionProgramComboID"
+                                           class="col-sm-3 col-form-label">
+                                        CTKM combo
+                                    </label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="ddlPromotionProgramComboID" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="ddlPhoneOfCustomer"
+                                           class="col-sm-3 col-form-label">
+                                        KH của ĐT
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="ddlPhoneOfCustomer" />
+                                    </div>
+                                    <label for="txtLegal" class="col-sm-2 col-form-label">Pháp nhân</label>
+                                    <div class="col-sm-4 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtLegal" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtTypeKN"
+                                           class="col-sm-3 col-form-label">
+                                        Loại KN
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtTypeKN" />
+                                    </div>
+                                    <label for="txtSaleChannel" class="col-sm-2 col-form-label SaleChannel">Kênh bán</label>
+                                    <div class="col-sm-4 SaleChannel hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtSaleChannel" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtTypeOfService"
+                                           class="col-sm-3 col-form-label">
+                                        Gói dv tính cước
+                                    </label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtTypeOfService" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtInfrastructure"
+                                           class="col-sm-3 col-form-label">
+                                        Hạ tầng
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtInfrastructure" />
+                                    </div>
+                                    <label for="txtPartner" class="col-sm-3 col-form-label">Đối tác khác thi công</label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtPartner" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword"
+                                           class="col-sm-3 col-form-label">
+                                        <a href="#" target="_blank" id="lkCheckExist">Kiểm tra trùng</a>
+                                    </label>
+                                    <label for="inputPassword"
+                                           class="col-sm-3 col-form-label">
+                                        <a href="#" target="_blank" id="lkContractUseStatus">Tình trạng sử dụng HĐ</a>
+                                    </label>
+                                    <label for="lkLoyalCustomers1"
+                                           class="col-sm-3 col-form-label">
+                                        <a href="#" target="_blank" id="lkLoyalCustomers">Khách hàng thân thiết</a>
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="lkLoyalCustomers1"
+                                               style="color: red !important; font-weight: 600"
+                                               value="Hạng" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtPhone" class="col-sm-3 col-form-label">
+                                        Số điện thoại cài HiFPT  <a style="color: red !important;" id="lkHiFPT"></a>
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtPhone" />
+                                        <div id="divHiFPT"></div>
+                                    </div>
+                                    <label for="txtLinkContract"
+                                           class="col-sm-3 col-form-label">
+                                        HĐ liên kết
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtLinkContract" />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtLocation_Phone"
+                                           class="col-sm-3 col-form-label">
+                                        Điện thoại chính chủ
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtLocation_Phone" />
+                                    </div>
+                                
+                                </div>
+                                <div class="form-group row">
+
+                                    <label for="txtFacebook"
+                                           class="col-sm-3 col-form-label">
+                                        Facebook
+                                    </label>
+                                    <div class="col-sm-9" id="divFacebook">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="k-card">
+                        <div class="k-card-header bg-card-header-01">
+                            <h6 class="k-card-subtitle"
+                                style="cursor: pointer"
+                                data-toggle="collapse"
+                                data-target=".multi-collapse"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="multiCollapseContract multiCollapseGeneral">
+                                Thông tin chung
+                            </h6>
+                        </div>
+                        <div class="k-card-body collapse multi-collapse show"
+                             id="multiCollapseGeneral">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="txtTypeLevel1"
+                                           class="col-sm-3 col-form-label">
+                                        Loại hình cấp 1
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input id="txtTypeLevel1" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                    <label for="txtTypeLevel2"
+                                           class="col-sm-3 col-form-label">
+                                        Loại hình cấp 2
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input id="txtTypeLevel2" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtObjectCustomer"
+                                           class="col-sm-3 col-form-label">
+                                        Đối tượng KH
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input id="txtObjectCustomer" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                    <label for="txtEmail"
+                                           class="col-sm-3 col-form-label">
+                                        Email
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input id="txtEmail" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtEmployeeCode"
+                                           class="col-sm-3 col-form-label">
+                                        Mã nhân viên
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input id="txtEmployeeCode" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                    <label for="txtCompany "
+                                           class="col-sm-3 col-form-label">
+                                        Tên công ty thành viên
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input id="txtCompany" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtCMT"
+                                           class="col-sm-3 col-form-label">
+                                        Số CMT
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input id="txtCMT" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                    <label for="txtCMTAddress"
+                                           class="col-sm-3 col-form-label">
+                                        Địa chỉ trên CMT
+                                    </label>
+                                    <div class="col-sm-3 hoverInput">
+                                        <input id="txtCMTAddress" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group row wifi">
+                                    <label for="ddlCusTypeDetail"
+                                           class="col-sm-3 col-form-label">
+                                        Chọn loại địa điểm
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <input id="ddlCusTypeDetail" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group row wifi">
+                                    <label for="ddlClassWifiID"
+                                           class="col-sm-3 col-form-label">
+                                        Phân loại
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <input id="ddlClassWifiID" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group row wifi">
+                                    <label for="ddlPlaceWifiID"
+                                           class="col-sm-3 col-form-label">
+                                        Nơi lắp dặt
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <input id="ddlPlaceWifiID" type="text" readonly="true"
+                                               class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group row company wifi">
+                                    <label for="txtCompany1" class="col-sm-3 col-form-label" id="lblPlaceName">
+                                        Công ty
+                                    </label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control " readonly="true"
+                                               id="txtCompany1" />
+                                    </div>
+                                </div>
+                                <div class="form-group row company wifi">
+                                    <label for="txtPB" class="col-sm-3 col-form-label">
+                                        Phòng ban
+                                    </label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text" class="form-control" readonly="true" id="ddlDepartment" />
+                                    </div>
+                                </div>
+                            
+                           
+                                <div class="form-group row">
+                                    <label for="txtAddress" class="col-sm-3 col-form-label">
+                                        Địa chỉ
+                                    </label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtAddress" />
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group row" style="margin-bottom: 3px !important">
+                                    <label for="staticEmail"
+                                           class="col-sm-3 col-form-label">
+                                        Điện thoại
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <table class="tbFilter"
+                                               id="tbTypePhone"
+                                               style="width: 100%; border: 1px solid #ccc"
+                                               border="1">
+                                            <tr>
+                                                <th class="text-sm-center">
+                                                    Loại hình phone
+                                                </th>
+                                                <th class="text-sm-center">Số điện thoại</th>
+                                                <th class="text-sm-center">
+                                                    Tên người dùng điện thoại
+                                                </th>
+                                                <th class="text-sm-center">
+                                                    Mối quan hệ với chủ hợp đồng
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm-center">
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control ddlTypePhone" readonly="true"
+                                                               id="ddlType1" />
+                                                    </div>
+                                                </td>
+
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtPhone1" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtContact1" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtRelationship1" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center" hidden>
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtId1" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm-center">
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control ddlTypePhone" readonly="true"
+                                                               id="ddlType2" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtPhone2" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtContact2" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtRelationship2" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center" hidden>
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtId2" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm-center">
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control ddlTypePhone" readonly="true"
+                                                               id="ddlType3" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtPhone3" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtContact3" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput ">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtRelationship3" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center" hidden>
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtId3" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm-center">
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control ddlTypePhone" readonly="true"
+                                                               id="ddlType4" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtPhone4" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtContact4" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput ">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtRelationship4" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center" hidden>
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtId4" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm-center">
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control ddlTypePhone" readonly="true"
+                                                               id="ddlType5" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtPhone5" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtContact5" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center">
+                                                    <div class="hoverInput ">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtRelationship5" />
+                                                    </div>
+                                                </td>
+                                                <td class="text-sm-center" hidden>
+                                                    <div class="m--5">
+                                                        <input type="text"
+                                                               class="form-control tbTypePhoneDelete" readonly="true"
+                                                               id="txtId5" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtPaymentAddress"
+                                           class="col-sm-3 col-form-label">
+                                        Địa chỉ thanh toán
+                                    </label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtPaymentAddress" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="txtInstallationAddress"
+                                           class="col-sm-3 col-form-label">
+                                        Địa chỉ lắp đặt
+                                    </label>
+                                    <div class="col-sm-9 hoverInput">
+                                        <input type="text"
+                                               class="form-control" readonly="true"
+                                               id="txtInstallationAddress" />
+                                    </div>
+                                </div>
+                            
+                              
+
+                              
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+           
+           
+        
+          
+          
+          
+           
+
+           
+
+          
+
+        
+        </div>
     </div>
 
     
