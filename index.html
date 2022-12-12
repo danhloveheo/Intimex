@@ -16,6 +16,11 @@
 	  <script src="Intimex.js"></script>
     
       <style>
+          
+    .btnExportExcel {
+        background-image: url("exportExcel.png");
+    }
+    
         .text-blue {
             color: #007bff;
         }
@@ -258,7 +263,7 @@
                 <div class="rect5"></div>
             </div>
         </div>
-     
+        <input id="btnExportDetail" type="button" class="btnExportExcel" title="Xuất Excel" onclick="ExportExcel()" />
         <div id="gridReport" ></div>
     </div>
 
@@ -273,7 +278,7 @@
             </div>
         </div>
         <div class="container-fluid" id="lbPTTB">
-            <label class="reportTitle">CHI TIẾT TÌNH TRẠNG HỢP ĐỒNG</label>
+            <label class="reportTitle">CHI TIẾT ĐÓNG HÀNG</label>
             <div class="row">
                 <div class="col">
                     <div class="k-card">
@@ -285,7 +290,7 @@
                                 role="button"
                                 aria-expanded="false"
                                 aria-controls="multiCollapseContract multiCollapseGeneral">
-                                Thông tin hợp đồng
+                                Thông tin đóng hàng
                             </h6>
                         </div>
                         <div class="k-card-body collapse multi-collapse show"
@@ -294,7 +299,7 @@
                                 <div class="form-group row">
                                     <label for="txtLocationCode"
                                            class="col-sm-3 col-form-label">
-                                        Loại vip
+                                        HĐ Ngoại
                                       
                                     </label>
                                     <div class="col-sm-3 hoverInput">
@@ -304,7 +309,7 @@
                                     </div>
                                     <label for="txtSubscriptionType"
                                            class="col-sm-2 col-form-label">
-                                        Ghi chú
+                                       Loại Hàng
                                     </label>
                                     <div class="col-sm-4 hoverInput">
                                         <input type="text"
@@ -315,7 +320,7 @@
                                 <div class="form-group row">
                                     <label for="txtLocationCode"
                                            class="col-sm-3 col-form-label">
-                                        Vùng miền
+                                       Số lượng
                                     </label>
                                     <div class="col-sm-3 hoverInput">
                                         <input type="text"
@@ -324,7 +329,7 @@
                                     </div>
                                     <label for="txtSubscriptionType"
                                            class="col-sm-2 col-form-label">
-                                        Loại thuê bao
+                                   Kho đóng
                                     </label>
                                     <div class="col-sm-4 hoverInput">
                                         <input type="text"
@@ -332,22 +337,16 @@
                                                id="txtSubscriptionType" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6" style="font-size: 11px;">
-                                        <a href="#" id="lkBandwidthPlanning" target="_blank" style="color: red !important;">QUI HOẠCH BĂNG THÔNG 2019</a>
-                                    </div>
-                                    <div class="col-sm-6" id="divWarning">
-                                    </div>
-                                </div>
+                              
                               
                                 <div class="form-group row">
-                                    <label for="txtContract" class="col-sm-3 col-form-label">Số HĐ</label>
+                                    <label for="txtContract" class="col-sm-3 col-form-label">Tiến độ kho</label>
                                     <div class="col-sm-3 hoverInput">
                                         <input type="text"
                                                class="form-control" readonly="true"
                                                id="txtContract" />
                                     </div>
-                                    <label for="dtContract" class="col-sm-2 col-form-label">Ngày HĐ</label>
+                                    <label for="dtContract" class="col-sm-2 col-form-label">Ghi chú</label>
                                     <div class="col-sm-4 hoverInput">
                                         <input type="text"
                                                class="form-control" readonly="true"
@@ -355,32 +354,10 @@
                                     </div>
                                 </div>
 
+                              
+                               
                                 <div class="form-group row">
-                                    <label for="txtParentContract" class="col-sm-3 col-form-label">Số HĐ cha</label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input type="text" readonly="true"
-                                               class="form-control"
-                                               id="txtParentContract" />
-                                    </div>
-                                    <label for="txtName1" class="col-sm-2 col-form-label">Tên truy nhập</label>
-                                    <div class="col-sm-4 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtName1" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="lblRadius" id="lblRadius" style="color: red" class="col-sm-3 col-form-label"></label>
-                                    <div class="col-sm-3">
-                                        <a href="#" target="_blank" id="lkCombo"></a>
-                                    </div>
-                                    <div class="col-sm-3" id="divCSKHInformation" style="display: none;">
-                                        <a href="#" id="lkCSKHInformation" target="_blank">Thông tin CSKH</a>
-                                    </div>
-                                    <label for="lblUpgradeLuxury" id="lblUpgradeLuxury" style="color: red" class="col-sm-3 col-form-label"></label>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtFullname" class="col-sm-3 col-form-label">Tên đầy đủ</label>
+                                    <label for="txtFullname" class="col-sm-3 col-form-label">Tàu booking</label>
                                     <div class="col-sm-9 hoverInput">
                                         <input type="text"
                                                class="form-control" readonly="true"
@@ -388,7 +365,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="ddlStatus" class="col-sm-3 col-form-label" id="lblStatus">Tình trạng</label>
+                                    <label for="ddlStatus" class="col-sm-3 col-form-label" id="lblStatus">Trạng thái</label>
                                     <div class="col-sm-5">
                                         <input type="text"
                                                class="form-control" readonly="true"
@@ -400,592 +377,28 @@
                                                id="txtSuspend_Date" />
                                     </div>
                                 </div>
-                                <div class="form-group row divStatus" style="display: none">
-                                    <label class="col-sm-3 col-form-label">Lý do</label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtSuspend_Reason" />
-                                    </div>
-                                </div>
-                                <div class="form-group row" style="display: none" id="divCancelStatus">
-                                    <label class="col-sm-3 col-form-label"></label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtStatus" />
-                                    </div>
-                                </div>
-                                <div class="form-group row" style="display: none; color: red" id="divFOResult">
-                                    <label class="col-sm-3 col-form-label"></label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtFOResult" />
-                                    </div>
-                                </div>
-                                <div class="form-group row" style="display: none; color: red" id="divFOSetup">
-                                    <label class="col-sm-3 col-form-label"></label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtFOSetup" />
-                                    </div>
-                                </div>
                              
-                                <div class="form-group row clkmcombo">
-                                    <label for="txtPromotionProgramComboInternet"
-                                           class="col-sm-3 col-form-label">
-                                        CLKM internet combo
-                                    </label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtPromotionProgramComboInternet" />
-                                    </div>
-                                </div>
-                                <div class="form-group row clkmcombo">
-                                    <label for="txtPromotionProgramComboPayTV"
-                                           class="col-sm-3 col-form-label">
-                                        CLKM PayTV
-                                    </label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtPromotionProgramComboPayTV" />
-                                    </div>
-                                </div>
-                                <div class="form-group row clkmcombo">
-                                    <label for="ddlPromotionProgramComboID"
-                                           class="col-sm-3 col-form-label">
-                                        CTKM combo
-                                    </label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="ddlPromotionProgramComboID" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="ddlPhoneOfCustomer"
-                                           class="col-sm-3 col-form-label">
-                                        KH của ĐT
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="ddlPhoneOfCustomer" />
-                                    </div>
-                                    <label for="txtLegal" class="col-sm-2 col-form-label">Pháp nhân</label>
-                                    <div class="col-sm-4 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtLegal" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtTypeKN"
-                                           class="col-sm-3 col-form-label">
-                                        Loại KN
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtTypeKN" />
-                                    </div>
-                                    <label for="txtSaleChannel" class="col-sm-2 col-form-label SaleChannel">Kênh bán</label>
-                                    <div class="col-sm-4 SaleChannel hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtSaleChannel" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="txtTypeOfService"
-                                           class="col-sm-3 col-form-label">
-                                        Gói dv tính cước
-                                    </label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtTypeOfService" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtInfrastructure"
-                                           class="col-sm-3 col-form-label">
-                                        Hạ tầng
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtInfrastructure" />
-                                    </div>
-                                    <label for="txtPartner" class="col-sm-3 col-form-label">Đối tác khác thi công</label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtPartner" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputPassword"
-                                           class="col-sm-3 col-form-label">
-                                        <a href="#" target="_blank" id="lkCheckExist">Kiểm tra trùng</a>
-                                    </label>
-                                    <label for="inputPassword"
-                                           class="col-sm-3 col-form-label">
-                                        <a href="#" target="_blank" id="lkContractUseStatus">Tình trạng sử dụng HĐ</a>
-                                    </label>
-                                    <label for="lkLoyalCustomers1"
-                                           class="col-sm-3 col-form-label">
-                                        <a href="#" target="_blank" id="lkLoyalCustomers">Khách hàng thân thiết</a>
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="lkLoyalCustomers1"
-                                               style="color: red !important; font-weight: 600"
-                                               value="Hạng" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtPhone" class="col-sm-3 col-form-label">
-                                        Số điện thoại cài HiFPT  <a style="color: red !important;" id="lkHiFPT"></a>
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtPhone" />
-                                        <div id="divHiFPT"></div>
-                                    </div>
-                                    <label for="txtLinkContract"
-                                           class="col-sm-3 col-form-label">
-                                        HĐ liên kết
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtLinkContract" />
-                                    </div>
-
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtLocation_Phone"
-                                           class="col-sm-3 col-form-label">
-                                        Điện thoại chính chủ
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtLocation_Phone" />
-                                    </div>
-                                
-                                </div>
-                                <div class="form-group row">
-
-                                    <label for="txtFacebook"
-                                           class="col-sm-3 col-form-label">
-                                        Facebook
-                                    </label>
-                                    <div class="col-sm-9" id="divFacebook">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="k-card">
-                        <div class="k-card-header bg-card-header-01">
-                            <h6 class="k-card-subtitle"
-                                style="cursor: pointer"
-                                data-toggle="collapse"
-                                data-target=".multi-collapse"
-                                role="button"
-                                aria-expanded="false"
-                                aria-controls="multiCollapseContract multiCollapseGeneral">
-                                Thông tin chung
-                            </h6>
-                        </div>
-                        <div class="k-card-body collapse multi-collapse show"
-                             id="multiCollapseGeneral">
-                            <form>
-                                <div class="form-group row">
-                                    <label for="txtTypeLevel1"
-                                           class="col-sm-3 col-form-label">
-                                        Loại hình cấp 1
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input id="txtTypeLevel1" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                    <label for="txtTypeLevel2"
-                                           class="col-sm-3 col-form-label">
-                                        Loại hình cấp 2
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input id="txtTypeLevel2" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtObjectCustomer"
-                                           class="col-sm-3 col-form-label">
-                                        Đối tượng KH
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input id="txtObjectCustomer" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                    <label for="txtEmail"
-                                           class="col-sm-3 col-form-label">
-                                        Email
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input id="txtEmail" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtEmployeeCode"
-                                           class="col-sm-3 col-form-label">
-                                        Mã nhân viên
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input id="txtEmployeeCode" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                    <label for="txtCompany "
-                                           class="col-sm-3 col-form-label">
-                                        Tên công ty thành viên
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input id="txtCompany" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtCMT"
-                                           class="col-sm-3 col-form-label">
-                                        Số CMT
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input id="txtCMT" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                    <label for="txtCMTAddress"
-                                           class="col-sm-3 col-form-label">
-                                        Địa chỉ trên CMT
-                                    </label>
-                                    <div class="col-sm-3 hoverInput">
-                                        <input id="txtCMTAddress" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group row wifi">
-                                    <label for="ddlCusTypeDetail"
-                                           class="col-sm-3 col-form-label">
-                                        Chọn loại địa điểm
-                                    </label>
-                                    <div class="col-sm-9">
-                                        <input id="ddlCusTypeDetail" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group row wifi">
-                                    <label for="ddlClassWifiID"
-                                           class="col-sm-3 col-form-label">
-                                        Phân loại
-                                    </label>
-                                    <div class="col-sm-9">
-                                        <input id="ddlClassWifiID" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group row wifi">
-                                    <label for="ddlPlaceWifiID"
-                                           class="col-sm-3 col-form-label">
-                                        Nơi lắp dặt
-                                    </label>
-                                    <div class="col-sm-9">
-                                        <input id="ddlPlaceWifiID" type="text" readonly="true"
-                                               class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group row company wifi">
-                                    <label for="txtCompany1" class="col-sm-3 col-form-label" id="lblPlaceName">
-                                        Công ty
-                                    </label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control " readonly="true"
-                                               id="txtCompany1" />
-                                    </div>
-                                </div>
-                                <div class="form-group row company wifi">
-                                    <label for="txtPB" class="col-sm-3 col-form-label">
-                                        Phòng ban
-                                    </label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text" class="form-control" readonly="true" id="ddlDepartment" />
-                                    </div>
-                                </div>
-                            
-                           
-                                <div class="form-group row">
-                                    <label for="txtAddress" class="col-sm-3 col-form-label">
-                                        Địa chỉ
-                                    </label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtAddress" />
-                                    </div>
-                                </div>
+                             
+                             
                                
-                                <div class="form-group row" style="margin-bottom: 3px !important">
-                                    <label for="staticEmail"
-                                           class="col-sm-3 col-form-label">
-                                        Điện thoại
-                                    </label>
-                                    <div class="col-sm-9">
-                                        <table class="tbFilter"
-                                               id="tbTypePhone"
-                                               style="width: 100%; border: 1px solid #ccc"
-                                               border="1">
-                                            <tr>
-                                                <th class="text-sm-center">
-                                                    Loại hình phone
-                                                </th>
-                                                <th class="text-sm-center">Số điện thoại</th>
-                                                <th class="text-sm-center">
-                                                    Tên người dùng điện thoại
-                                                </th>
-                                                <th class="text-sm-center">
-                                                    Mối quan hệ với chủ hợp đồng
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-sm-center">
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control ddlTypePhone" readonly="true"
-                                                               id="ddlType1" />
-                                                    </div>
-                                                </td>
+                             
+                              
+                              
+                              
+                              
+                             
 
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtPhone1" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtContact1" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtRelationship1" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center" hidden>
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtId1" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-sm-center">
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control ddlTypePhone" readonly="true"
-                                                               id="ddlType2" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtPhone2" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtContact2" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtRelationship2" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center" hidden>
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtId2" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-sm-center">
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control ddlTypePhone" readonly="true"
-                                                               id="ddlType3" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtPhone3" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtContact3" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput ">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtRelationship3" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center" hidden>
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtId3" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-sm-center">
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control ddlTypePhone" readonly="true"
-                                                               id="ddlType4" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtPhone4" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtContact4" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput ">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtRelationship4" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center" hidden>
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtId4" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-sm-center">
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control ddlTypePhone" readonly="true"
-                                                               id="ddlType5" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtPhone5" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtContact5" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center">
-                                                    <div class="hoverInput ">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtRelationship5" />
-                                                    </div>
-                                                </td>
-                                                <td class="text-sm-center" hidden>
-                                                    <div class="m--5">
-                                                        <input type="text"
-                                                               class="form-control tbTypePhoneDelete" readonly="true"
-                                                               id="txtId5" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtPaymentAddress"
-                                           class="col-sm-3 col-form-label">
-                                        Địa chỉ thanh toán
-                                    </label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtPaymentAddress" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="txtInstallationAddress"
-                                           class="col-sm-3 col-form-label">
-                                        Địa chỉ lắp đặt
-                                    </label>
-                                    <div class="col-sm-9 hoverInput">
-                                        <input type="text"
-                                               class="form-control" readonly="true"
-                                               id="txtInstallationAddress" />
-                                    </div>
-                                </div>
+                            
                             
                               
-
+                             
+                               
                               
                             </form>
                         </div>
                     </div>
                 </div>
+               
             </div>
           
            

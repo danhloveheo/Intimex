@@ -1,31 +1,13 @@
 ﻿$(document).ready(function () {
-    getData();
+  
     getListSheets();
     
    
 });
 var listSheets = [];
-var listall = [];
 
 
-function getData() {
 
-    $.ajax({
-        url: 'https://script.google.com/macros/s/AKfycbxtcCEl9zZ9QYUNho0XkEDj14vn8JmgRGgOgYxiJqXbub1Yt6Bk2yqpCzDkLcBU9sm25Q/exec',
-        success: function (result) {
-
-            listall = result;
-            console.log("--");
-            console.log(listall);
-            console.log("--");
-         
-        },
-        error: function () {
-            console.log("err");
-
-        }
-    });
-}
 function getListSheets() {
 
     $.ajax({
@@ -79,13 +61,13 @@ function createControl() {
         }
     });
 
-
     $('#gridReport').kendoGrid({
         excel: {
             allPages: true,
             filterable: true
         },
-       
+
+
 
         selectable: true,
         height: 700,
@@ -93,68 +75,15 @@ function createControl() {
         resizable: true,
         scrollable: true,
         //  reorderable: true,
-        pageable: {
-            refresh: true,
-            buttonCount: 5,
-            pageSize: 140,
-            messages: {
-                itemsPerPage: "dòng / trang",
-                display: "Hiển thị {0} - {1} / {2}",
-                empty: "Không tìm thấy dữ liệu"
-            }
-        },
+      
+   
         selectable: true,
-        filterable: {
-            extra: false,
-            messages: { and: "và", or: "hoặc", filter: "Lọc", clear: "Hủy lọc", info: "" },
-            operators: {
-                string: { eq: "Bằng", neq: "Khác", startswith: "Bắt đầu từ", contains: "Chứa", doesnotcontain: "Không chứa", endswith: "Kết thúc bằng" }
-                , number: { eq: "=", neq: "!=", gte: ">=", gt: ">", lte: "<=", lt: "<" }
-                , date: { neq: "!=", gte: ">=", gt: ">", lte: "<=", lt: "<" }
-            }
-        },
+     
 
     });
+   
 
-    $('#gridDetail').kendoGrid({
-        excel: {
-            allPages: true,
-            filterable: true
-        },
-
-        selectable: true,
-        height: 700,
-        // sortable: true,
-        resizable: true,
-        scrollable: true,
-        //  reorderable: true,
-        columns: [
-        ],
-
-
-
-        pageable: {
-            refresh: true,
-            buttonCount: 5,
-            pageSize: 140,
-            messages: {
-                itemsPerPage: "dòng / trang",
-                display: "Hiển thị {0} - {1} / {2}",
-                empty: "Không tìm thấy dữ liệu"
-            }
-        },
-        selectable: true,
-        filterable: {
-            extra: false,
-            messages: { and: "và", or: "hoặc", filter: "Lọc", clear: "Hủy lọc", info: "" },
-            operators: {
-                string: { eq: "Bằng", neq: "Khác", startswith: "Bắt đầu từ", contains: "Chứa", doesnotcontain: "Không chứa", endswith: "Kết thúc bằng" }
-                , number: { eq: "=", neq: "!=", gte: ">=", gt: ">", lte: "<=", lt: "<" }
-                , date: { neq: "!=", gte: ">=", gt: ">", lte: "<=", lt: "<" }
-            }
-        },
-
-    });
+   
 
    
     function LoadAssignReport() {
@@ -208,26 +137,50 @@ function createControl() {
 
     function LoadReport() {
         var d = getFilter();
-        var listconSheets = listall;
-        if(d.fSheets != '')
-        {
-            
-        var listconSheets = listall.filter(function (item) {
-            return item.Sheet == d.fSheets ;
-        });
-        }
+      
         var tabstrip = $('#tabstrip').data('kendoTabStrip');
         tabstrip.select(1);
         tabstrip.enable(tabstrip.select(), true);
         var grid = $('#gridReport').data("kendoGrid");
         var options = grid.options;
         options.columns = colView();
+        $.ajax({
+            url: 'https://script.google.com/macros/s/AKfycbxtcCEl9zZ9QYUNho0XkEDj14vn8JmgRGgOgYxiJqXbub1Yt6Bk2yqpCzDkLcBU9sm25Q/exec',
+            beforeSend: function () {
+                $('.ViewLoader1').css("display", "block");
+            },
+            complete: function () {
+                $('.ViewLoader1').css("display", "none");
+            },
+            success: function (result) {
+    
+                listall = result;
+              
+                var listconSheets = listall;
+                if(d.fSheets != '')
+                {
+                    
+                var listconSheets = listall.filter(function (item) {
+                    return item.Sheet == d.fSheets ;
+                });
+                }
+
+        
+     
         var dataSource = new kendo.data.DataSource({
             data: listconSheets,
             pageSize: 100,
         });
         options.dataSource = dataSource;
         $('#gridReport').empty().kendoGrid(options);
+             
+            },
+            error: function () {
+                console.log("err");
+    
+            }
+        });
+      
 
 
     }
@@ -236,12 +189,49 @@ function createControl() {
         var columns =
              [
              {
-                 field: "Name", title: "Name", width: "20px",
+                 field: "['HỢP ĐỒNG NGOẠI']", title: "HỢP ĐỒNG NGOẠI", width: "20px",
                  headerAttributes:
                  { style: "text-align: center; font-weight: bold;white-space: normal" },
                  attributes: { style: "text-align:center;" }
              },
-             
+             {
+                field: "['LOẠI HÀNG']", title: "LOẠI HÀNG", width: "20px",
+                headerAttributes:
+                { style: "text-align: center; font-weight: bold;white-space: normal" },
+                attributes: { style: "text-align:center;" }
+            },
+            {
+                field: "['SỐ LƯỢNG']", title: "SỐ LƯỢNG", width: "20px",
+                headerAttributes:
+                { style: "text-align: center; font-weight: bold;white-space: normal" },
+                attributes: { style: "text-align:center;" }
+            },
+            {
+                field: "['KHO ĐÓNG']", title: "KHO ĐÓNG", width: "20px",
+                headerAttributes:
+                { style: "text-align: center; font-weight: bold;white-space: normal" },
+                attributes: { style: "text-align:center;" }
+            },
+            {
+                field: "['TIẾN ĐỘ KHO']", title: "TIẾN ĐỘ KHO", width: "20px",
+                headerAttributes:
+                { style: "text-align: center; font-weight: bold;white-space: normal" },
+                attributes: { style: "text-align:center;" }
+            },
+            {
+                field: "['GHI CHÚ']", title: "GHI CHÚ", width: "20px",
+                headerAttributes:
+                { style: "text-align: center; font-weight: bold;white-space: normal" },
+                attributes: { style: "text-align:center;" }
+            },
+            {
+                field: "['GHI CHÚ']", title: "GHI CHÚ", width: "20px",
+                headerAttributes:
+                { style: "text-align: center; font-weight: bold;white-space: normal" },
+                attributes: { style: "text-align:center;" }
+            },
+            
+            
              ]
         return columns;
     }
@@ -319,4 +309,8 @@ function getFilter() {
     }
     return filter;
 }
-
+function ExportExcel() {
+    var grid = $("#gridReport").data("kendoGrid");
+    grid.options.excel.fileName = "Bao cao dong hang";
+    grid.saveAsExcel();
+}
