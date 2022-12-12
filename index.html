@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ajax Api call by jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	    <link href="all.css" rel="stylesheet" />
+     <link href="all-custom.css" rel="stylesheet" />
+    <link href="UC_Controls-3.0.css" rel="stylesheet" />
+	<script src="jszip.min.js"></script>
+<script src="jquery.min.js"></script>
+<script src="kendo.all.min.js"></script>
+<script src="MultiSelect.js"></script>
+	<script src="Intimex.js"></script>
+    
+   
+  </head>
+  <body>
+ <div id="tabstrip">
+   <ul>
+        <li class="k-state-active">Điều kiện lọc
+        </li>
+        <li>Báo cáo tổng hợp
+        </li>
+        <li>Báo cáo chi tiết
+        </li>
+      
+    </ul>
+
+    <div>
+
+      <label  class="reportTitle" style="margin-bottom: 10px; margin-top: 10px;">Intimex Group</label>
+        <table class="tbFilter" style="padding-top: 1em">
+
+            
+            <tr>
+                <td>Tỉnh thành</td>
+                <td>
+                    <input id="fLocation" value="" style="width: 250px;" />
+                </td>
+            </tr>
+            
+
+
+             <tr>
+                <td>Hợp đồng</td>
+                <td>
+                    <input id="fStaff" class ="k-textbox" style="width: 250px; " />
+                </td>
+            </tr>
+
+           <tr>
+                <td></td>
+                <td>
+            
+                     <button class="k-button btnAction k-primary" style="width: 150px" id="btnViewReport" >Xem báo cáo</button>
+                </td>
+                
+               
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <label id="lblReportAssign" class="reportTitle">PHÂN CÔNG TUYẾN ĐƯỜNG</label>
+        <div class="ViewLoader1" style="position: absolute; background-color: white; width: 100%; height: 565px; opacity: 0.9; z-index: 1000; display: none">
+            <div class="spinner" style="margin-left: 67em; margin-top: 10em;">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+        <button class="k-button btnAction k-primary" style="width: 150px;height:35px" id="btnUpdateAssignRoute">Cập nhật</button><br />
+        <div id="gridAssign" ></div>
+    </div>
+
+      <div>
+        <label id="lblReport" class="reportTitle">BÁO CÁO TUYẾN ĐƯỜNG</label>
+        <div class="ViewLoader2" style="position: absolute; background-color: white; width: 100%; height: 565px; opacity: 0.9; z-index: 1000; display: none">
+            <div class="spinner" style="margin-left: 67em; margin-top: 10em;">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+     
+           <input class="btnExportExcel" id="btnexp" type="button" title="Xuất Excel" onclick="ExportExcelReport()" />
+        <div id="gridReport" ></div>
+    </div>
+
+    
+</div>
+  </body>
+</html>

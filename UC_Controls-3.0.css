@@ -1,0 +1,445 @@
+﻿html {
+    /*font: 400 15px Helvetica Neue, sans-serif;*/
+}
+
+body {
+}
+
+/***********************|Report Title|***********************/
+.reportTitle {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .reportTitle button {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+/***********************|Table Filter|***********************/
+.tbFilter {
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0px;
+}
+
+    .tbFilter tr {
+        height: 40px;
+    }
+
+        .tbFilter tr td label {
+            font-weight: normal;
+        }
+
+        .tbFilter tr > td:first-child, .tbFilter tr > td:first-child + td + td {
+            font-weight: bold;
+            text-align: right;
+            padding-left: 10px;
+            padding-right: 10px;
+            vertical-align: middle;
+        }
+
+            .tbFilter tr > td:first-child + td, .tbFilter tr > td:last-child {
+                font-weight: normal;
+                color: black;
+                text-align: left;
+                padding-left: 10px;
+                padding-right: 10px;
+                vertical-align: middle;
+                word-wrap: break-word;
+                max-width: 305px;
+            }
+
+/***********************|Kendo Control|***********************/
+.KendoControl {
+    width: 300px;
+    font-size: 15px;
+}
+
+input[type="text"]:disabled, textarea:disabled, textarea:disabled:hover {
+    background-color: #F5F5F5;
+    color: #000;
+}
+
+.KendoControlError {
+    background-color: #fff !important;
+    color: #f00;
+    border: #f00 2px dashed !important;
+}
+
+.stt {
+    text-align: right !important;
+}
+
+.black {
+    color: black;
+}
+
+    .black a {
+        color: black;
+    }
+
+/***********************|Kendo Grid|***********************/
+.KendoGrid {
+    width: 100%;
+    height: 600px;
+    display: flex !important; /*inline-block*/
+    box-sizing: border-box;
+}
+
+    .KendoGrid .k-selectable a[href="javascript:;"] {
+        text-decoration: none;
+        color: blue;
+        font-weight: bold;
+    }
+
+        .KendoGrid .k-selectable a[href="javascript:;"]:hover {
+            text-decoration: underline;
+        }
+
+    .KendoGrid .k-header {
+        font-weight: bold;
+        text-align: center;
+        border-left: 1px solid #CCC !important;
+        border-top: 1px solid #CCC !important;
+        white-space: nowrap;
+    }
+
+    .KendoGrid .k-grid-header-wrap tr {
+        /*border: none !important;*/
+    }
+
+    .KendoGrid .k-footer-template span.stt {
+        width: 100%;
+        display: block;
+    }
+
+    .KendoGrid table.k-selectable {
+        border-bottom: 1px ridge #D8D8D8;
+    }
+
+    .KendoGrid .k-grid-header {
+        display: inline-block;
+    }
+
+    .KendoGrid .k-grid-toolbar {
+        text-align: left !important;
+    }
+
+        .KendoGrid .k-grid-toolbar .button-col-exp {
+            width: 50px;
+            height: 36px;
+        }
+
+.k-grid tr td {
+    border-bottom: 1px solid #e2e1e1 !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.k-grouping-row td, .k-group-footer td, .k-grid-footer td {
+    font-weight: bold;
+}
+
+    .k-grouping-row td a, .k-group-footer td a, .k-grid-footer td a {
+        color: blue;
+    }
+
+
+td.stt[data-content='0'], td.stt[data-content='0'] a, span.stt a[data-content='0'] {
+    pointer-events: none;
+    text-decoration: none;
+}
+
+td.view0[data-content='0'], td.view0[data-content='0'] a {
+    color: transparent;
+}
+
+
+/***************|Kendo Grid Export Excel Draw Chart|***************/
+.tbExportExcel {
+    float: right;
+}
+
+.btnDrawChart, .btnExportExcel, .btnRefresh {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: none;
+    width: 22px;
+    height: 34px;
+}
+
+.btnRefresh {
+    background-image: url("/Content/images/icons/refresh.png");
+}
+
+.btnExportExcel {
+    background-image: url("/Content/images/icons/exportExcel.png");
+}
+
+.btnDrawChart {
+    background-image: url("/Content/images/icons/drawChart.png");
+}
+
+    .btnDrawChart:hover, .btnExportExcel:hover {
+        cursor: pointer;
+    }
+
+    .btnDrawChart[disabled]:hover, .btnExportExcel[disabled]:hover {
+        cursor: not-allowed;
+    }
+
+.lblExportExcelStatus {
+    color: red;
+    font-weight: bold !important;
+}
+
+/*****************|Expand Collapse All|*****************/
+.tbExpColAll {
+    float: left;
+}
+
+    .tbExpColAll button {
+        width: 50px;
+    }
+
+/****************|Expand Collapse Item|****************/
+.expCol {
+    text-align: center !important;
+    /*vertical-align: central !important;*/
+}
+
+    .expCol img:hover {
+        cursor: pointer;
+    }
+
+/*****************|Level 1|*****************/
+.GridLevel .Level1, .GridLevel .Level1 a {
+    color: blue;
+    font-weight: bold;
+}
+
+/*****************|Level 2|*****************/
+.GridLevel .Level2, .GridLevel .Level2 a {
+    color: black;
+    font-weight: bold;
+}
+
+    .GridLevel .Level2.Name {
+        padding-left: 20px;
+    }
+
+/*****************|Level 3|*****************/
+.GridLevel .Level3, .GridLevel .Level3 a {
+    color: black;
+    font-weight: bold;
+}
+
+    .GridLevel .Level3.Name {
+        padding-left: 40px;
+    }
+
+/*****************|Level 4|*****************/
+.GridLevel .Level4 a {
+    color: black;
+}
+
+.GridLevel .Level4.Name {
+    padding-left: 60px;
+}
+
+/*****************|Level 5|*****************/
+.GridLevel .Level5 a {
+    color: black;
+}
+
+.GridLevel .Level5.Name {
+    padding-left: 80px;
+}
+
+/********************|Kendo MultiSelect|********************/
+.KendoMultiSelect_CheckBox {
+    margin-right: 10px;
+}
+
+    .KendoMultiSelect_CheckBox + label {
+        font-weight: normal !important;
+    }
+
+.KendoMultiSelect ul[role="listbox"] {
+    display: none;
+}
+
+.KendoMultiSelect .k-input {
+    font-size: 15px;
+    width: 100% !important;
+    /*font-family: 'Times New Roman';*/
+}
+
+    .KendoMultiSelect .k-input::-webkit-input-placeholder { /* WebKit browsers */
+        color: black;
+    }
+
+    .KendoMultiSelect .k-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: black;
+        opacity: 1;
+    }
+
+    .KendoMultiSelect .k-input:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: black;
+    }
+/********************|Kendo PanelBar|********************/
+.KendoPanelBar li li > span > span:nth-child(1) {
+    padding-left: 20px;
+}
+
+.KendoPanelBar li li li > span > span:nth-child(1) {
+    padding-left: 40px;
+}
+
+.KendoPanelBar li > span > span:nth-child(1) {
+    font-weight: bold;
+    padding-left: 0px;
+    color: black;
+}
+
+.KendoPanelBar li > div:first-of-type {
+}
+
+.width2 {
+    width: 148px !important;
+}
+/********************|Draw Chart|********************/
+.chartColumn3D {
+    background-size: 100%;
+    color: #fff;
+    width: 100%;
+    height: 400px;
+    font-size: 11px;
+}
+
+/**********************|Border|**********************/
+.brt {
+    border-top: 1px solid black;
+}
+
+.brl {
+    border-left: 1px solid black;
+}
+
+.brb {
+    border-bottom: 1px solid black;
+}
+
+.brr {
+    border-right: 1px solid black;
+}
+
+/**********************|Scroll|**********************/
+.divScroll {
+    width: 100%;
+    overflow: auto;
+}
+
+    .divScroll .KendoGrid {
+        width: 99%;
+    }
+
+/**********************|Menu|**********************/
+
+#gridMenu {
+    overflow: auto;
+    position: absolute;
+    width: 210px;
+    height: 630px;
+    float: left;
+    margin-left: -220px;
+}
+
+    #gridMenu .k-grid-content {
+        height: 100% !important;
+    }
+
+    #gridMenu .k-grid-header, #gridMenu .k-grid-footer {
+        display: none;
+    }
+
+    #gridMenu td.expCol {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+/**********************|Kendo Window|**********************/
+.KendoWindow .k-window-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/**********************|Kendo Panel Bar|**********************/
+.tPanelBar {
+    width: 100%;
+}
+
+    .tPanelBar tr td {
+        width: 50%;
+        vertical-align: top;
+    }
+
+    .tPanelBar ul {
+        width: 100%;
+    }
+
+.tChild {
+    margin-top: 20px;
+}
+
+    .tChild .title {
+        font-weight: bold;
+        color: blue;
+    }
+
+.k-list-filter .k-textbox {
+    width: 294px;
+}
+
+.k-list-filter .k-i-search {
+    display: none;
+}
+
+/**Bổ sung mới**/
+
+.k-filter-menu .k-button {
+    padding: 5px 10px !important;
+}
+
+.k-tabstrip > .k-content, .k-panelbar .k-tabstrip > .k-content {
+    margin: 0 !important;
+}
+
+.k-button {
+    padding: 5px 25px !important;
+    font-weight: bold !important;
+}
+
+.k-grid-header th.k-header {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 15px;
+    white-space: pre-wrap;
+    font-weight: bold;
+}
+
+.tChild {
+    margin-top: 0px;
+}
+
+
+.k-dropdown .k-input, .k-dropdown .k-state-focused .k-input, .k-menu .k-popup {
+    height: 32px;
+}
