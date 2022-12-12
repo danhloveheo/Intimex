@@ -1,10 +1,51 @@
 ﻿$(document).ready(function () {
-    createControl();
+    getData();
+    getListSheets();
+    setTimeout(function () {  createControl()
+        , 2000; }, 4000);
+
    
 
 
 });
-var listall = [];
+var listSheets = [];
+
+
+function getData() {
+
+    $.ajax({
+        url: 'https://script.google.com/macros/s/AKfycby3gPLc-c9DilLv2Tf2bt9phceRR61jyAqxf5tNJNFyBjcYwk-AwlExMCeCJH3t5Y-67Q/exec',
+        success: function (result) {
+
+            listall = result;
+            console.log("--");
+            console.log(listall);
+            console.log("--");
+        },
+        error: function () {
+            console.log("err");
+
+        }
+    });
+}
+function getListSheets() {
+
+    $.ajax({
+        url: 'https://script.google.com/macros/s/AKfycbx-rC80WJZN0CIJaDZtIFo_HxmJNSIJiDMUbLosN2rTg8ntVllxwWG2nouOZPwwh8LJpg/exec',
+        success: function (result) {
+
+            listSheets = result;
+            console.log("--");
+            console.log(listSheets);
+            console.log("--");
+        },
+        error: function () {
+            console.log("err");
+
+        }
+    });
+}
+
 
 
 function createControl() {
@@ -13,26 +54,16 @@ function createControl() {
     });
 
   
-
-    $.ajax({
+    $("#fSheets").kendoMultiSelectBox({
+        dataTextField: 'Name',
+        dataValueField: 'Value',
+        dataSource: listSheets,
+        autoClose: false,
+        showSelectAll: true,
+        emptySelectionLabel: "Chọn Sheets...",
       
-        url: 'https://script.google.com/macros/s/AKfycby3gPLc-c9DilLv2Tf2bt9phceRR61jyAqxf5tNJNFyBjcYwk-AwlExMCeCJH3t5Y-67Q/exec',
-        success: function (result) {
-            console.log(result);
-            $('#fLocation').kendoDropDownList({
-                dataTextField: 'Name',
-                dataValueField: 'Age',
-                dataSource: result,
-              
-            });
-         
-
-        },
-        error: function () {
-            var multiSelect = $('#fLocation').data('kendoDropDownList');
-            alert('Vui lòng chọn Quận');
-        }
     });
+  
    
     var datafStatusAssign = [
 { text: 'Đã PC', value: '1' },

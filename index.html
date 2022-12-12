@@ -6,11 +6,11 @@
 	    <link href="all.css" rel="stylesheet" />
      <link href="all-custom.css" rel="stylesheet" />
     <link href="UC_Controls-3.0.css" rel="stylesheet" />
-	<script src="jszip.min.js"></script>
-<script src="jquery.min.js"></script>
-<script src="kendo.all.min.js"></script>
-<script src="MultiSelect.js"></script>
-	<script src="Intimex.js"></script>
+	  <script src="jszip.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="kendo.all.min.js"></script>
+    <script src="MultiSelect.js"></script>
+	  <script src="Intimex.js"></script>
     
    
   </head>
@@ -31,31 +31,31 @@
       <label  class="reportTitle" style="margin-bottom: 10px; margin-top: 10px;">Intimex Group</label>
         <table class="tbFilter" style="padding-top: 1em">
 
-            
+          <tr>
+            <td>Sheets</td>
+            <td>
+                <input id="fSheets" value = "" style="width: 250px;" />
+            </td>
+        </tr>  
+
             <tr>
-                <td>Tỉnh thành</td>
+                <td>HĐ Ngoại</td>
                 <td>
-                    <input id="fLocation" value="" style="width: 250px;" />
+                    <input id="fContract" class ="k-textbox" style="width: 250px;" />
                 </td>
             </tr>
-            
-
-
              <tr>
-                <td>Hợp đồng</td>
+                <td>Booking</td>
                 <td>
-                    <input id="fStaff" class ="k-textbox" style="width: 250px; " />
+                    <input id="fBooking" class ="k-textbox" style="width: 250px; " />
                 </td>
             </tr>
-
            <tr>
                 <td></td>
                 <td>
             
                      <button class="k-button btnAction k-primary" style="width: 150px" id="btnViewReport" >Xem báo cáo</button>
-                </td>
-                
-               
+                </td>  
             </tr>
         </table>
     </div>
