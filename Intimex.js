@@ -237,17 +237,18 @@ function createControl() {
                 attributes: { style: "text-align:center;" }
             },
             {
-                field: "['GHI CHÚ']", title: "GHI CHÚ", width: "20px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
                 field: "['BOOKING/TÀU']", title: "TÀU", width: "20px",
                 headerAttributes:
                 { style: "text-align: center; font-weight: bold;white-space: normal" },
                 attributes: { style: "text-align:center;" }
             },
+            {
+                field: "['GHI CHÚ']", title: "GHI CHÚ", width: "20px",
+                headerAttributes:
+                { style: "text-align: center; font-weight: bold;white-space: normal" },
+                attributes: { style: "text-align:center;" }
+            },
+           
             
             
              ]
