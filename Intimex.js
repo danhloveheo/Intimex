@@ -207,7 +207,7 @@ function createControl() {
         var columns =
              [
              {
-                 field: "['HỢP ĐỒNG NGOẠI']", title: "HỢP ĐỒNG NGOẠI", width: "20px",
+                 field: "['HĐ NGOẠI']", title: "HỢP ĐỒNG NGOẠI", width: "20px",
                  headerAttributes:
                  { style: "text-align: center; font-weight: bold;white-space: normal" },
                  attributes: { style: "text-align:center;" }
