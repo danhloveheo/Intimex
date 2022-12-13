@@ -11,7 +11,7 @@ var listSheets = [];
 function getListSheets() {
 
     $.ajax({
-        url: 'https://script.google.com/macros/s/AKfycbx-rC80WJZN0CIJaDZtIFo_HxmJNSIJiDMUbLosN2rTg8ntVllxwWG2nouOZPwwh8LJpg/exec',
+        url: 'https://script.google.com/macros/s/AKfycby0lkeSUIVsYv1-ha8QUqlG_RXABCjpW1MbQCbNNelvJTlbkYwQ1zPG-ZU0ecpkwyB5Lg/exec',
         success: function (result) {
 
             listSheets = result;
@@ -57,7 +57,7 @@ function createControl() {
     });
     $('#btnInsertReport').kendoButton({
         click: function (e) {
-            window.open("https://docs.google.com/spreadsheets/d/13BWkyA7_qEd7VdTa3vGtj1T-ZAm66T8D2-ek-T6GbMQ/edit?usp=sharing", "PopUpGet","toolbars=no,scrollbars=yes,status=yes,resizable=no");
+            window.open("https://docs.google.com/spreadsheets/d/1nUaGrr-ygPN5zNfls8L1h8zVor8FHWNirkztDIw2DSQ/edit#gid=837559345", "PopUpGet","toolbars=no,scrollbars=yes,status=yes,resizable=no");
         }
     });
 
@@ -78,10 +78,28 @@ function createControl() {
       
    
         selectable: true,
-     
+        pageable: {
+            refresh: true,
+            buttonCount: 5,
+            pageSize: 140,
+            messages: {
+                itemsPerPage: "dòng / trang",
+                display: "Hiển thị {0} - {1} / {2}",
+                empty: "Không tìm thấy dữ liệu"
+            }
+        },
+        selectable: true,
+        filterable: {
+            extra: false,
+            messages: { and: "và", or: "hoặc", filter: "Lọc", clear: "Hủy lọc", info: "" },
+            operators: {
+                string: { eq: "Bằng", neq: "Khác", startswith: "Bắt đầu từ", contains: "Chứa", doesnotcontain: "Không chứa", endswith: "Kết thúc bằng" }
+                , number: { eq: "=", neq: "!=", gte: ">=", gt: ">", lte: "<=", lt: "<" }
+                , date: { neq: "!=", gte: ">=", gt: ">", lte: "<=", lt: "<" }
+            }
+        },
 
     });
-   
 
    
 
@@ -145,7 +163,7 @@ function createControl() {
         var options = grid.options;
         options.columns = colView();
         $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbxtcCEl9zZ9QYUNho0XkEDj14vn8JmgRGgOgYxiJqXbub1Yt6Bk2yqpCzDkLcBU9sm25Q/exec',
+            url: 'https://script.google.com/macros/s/AKfycby6v3GHa57L9vZolg3WVDx707S0FVnMf-TNXpjI3opPPfjzX0uLvZnrXgPyC84mUFDOgg/exec',
             beforeSend: function () {
                 $('.ViewLoader1').css("display", "block");
             },
