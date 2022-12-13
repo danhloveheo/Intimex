@@ -220,48 +220,54 @@ function createControl() {
         var d = getFilter();
         var columns =
              [
-             {
-                 field: "['HỢP ĐỒNG NGOẠI']", title: "HỢP ĐỒNG NGOẠI", width: "20px",
-                 headerAttributes:
-                 { style: "text-align: center; font-weight: bold;white-space: normal" },
-                 attributes: { style: "text-align:center;" }
-             },
-             {
-                field: "['LOẠI HÀNG']", title: "LOẠI HÀNG", width: "20px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
-                field: "['SỐ LƯỢNG']", title: "SỐ LƯỢNG", width: "20px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
-                field: "['KHO ĐÓNG']", title: "KHO ĐÓNG", width: "20px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
-                field: "['TIẾN ĐỘ KHO']", title: "TIẾN ĐỘ KHO", width: "20px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
-                field: "['BOOKING/TÀU']", title: "TÀU", width: "20px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
-                field: "['GHI CHÚ']", title: "GHI CHÚ", width: "20px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
+                {
+                    field: "['HĐ NGOẠI']", title: "HĐ NGOẠI", width: "20px",
+                    headerAttributes:
+                    { style: "text-align: center; font-weight: bold;white-space: normal" },
+                    attributes: { style: "text-align:center;" }
+                },
+                {
+                   field: "['LOẠI HÀNG']", title: "LOẠI HÀNG", width: "20px",
+                   headerAttributes:
+                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   attributes: { style: "text-align:center;" }
+               },
+               {
+                   field: "['SỐ LƯỢNG']", title: "SỐ LƯỢNG", width: "20px",
+                   headerAttributes:
+                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   attributes: { style: "text-align:center;" }
+               },
+               {
+                   field: "['KHO ĐÓNG']", title: "KHO ĐÓNG", width: "20px",
+                   headerAttributes:
+                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   attributes: { style: "text-align:center;" }
+               },
+               {
+                   field: "['TIẾN ĐỘ KHO']", title: "TIẾN ĐỘ KHO", width: "20px",
+                   headerAttributes:
+                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   attributes: { style: "text-align:center;" }
+               },
+               {
+                   field: "['BOOKING/TÀU']", title: "TÀU", width: "20px",
+                   headerAttributes:
+                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   attributes: { style: "text-align:center;" }
+               },
+               {
+                   field: "['GHI CHÚ']", title: "GHI CHÚ", width: "20px",
+                   headerAttributes:
+                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   attributes: { style: "text-align:center;" }
+               },
+               {
+                   field: "['GIÁM ĐỊNH']", title: "GIÁM ĐỊNH", width: "20px",
+                   headerAttributes:
+                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   attributes: { style: "text-align:center;" }
+               },
            
             
             
