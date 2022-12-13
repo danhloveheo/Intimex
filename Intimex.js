@@ -5,7 +5,7 @@
    
 });
 var listSheets = [];
-
+var listconSheets ;
 
 
 function getListSheets() {
@@ -163,7 +163,7 @@ function createControl() {
         var options = grid.options;
         options.columns = colView();
         $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbzymFygB_3iVS8lcyw0qYvX-cawdp8FtaqUjVYQ6MXCyLRMzYohK-Ccj-0bRqVH2Jt_aw/exec',
+            url: 'https://script.google.com/macros/s/AKfycbzlQEDfV-SmW4mYpAt99Gc1Qi_S6Tvp-5YcdMAX9tK7SaNJvjjgkPepUM8eGhXeS-1DpQ/exec',
             beforeSend: function () {
                 $('.ViewLoader1').css("display", "block");
             },
@@ -178,15 +178,15 @@ function createControl() {
                 if(d.fSheets != '')
                 {
                     
-                var listconSheets = listall.filter(function (item) {
+                 listconSheets = listall.filter(function (item) {
                     return item.Sheet == d.fSheets.trim() ;
                 });
                 }
                 if(d.fContract != '')
                 {
                     
-                var listconSheets = listconSheets.filter(function (item) {
-                    return item["HỢP ĐỒNG NGOẠI"] == d.fContract.trim() ;
+                 listconSheets = listconSheets.filter(function (item) {
+                    return item["HĐ NGOẠI"] == d.fContract.trim() ;
 
                     
                 });
@@ -194,7 +194,7 @@ function createControl() {
                 if(d.fBooking != '')
                 {
                     
-                var listconSheets = listconSheets.filter(function (item) {
+                 listconSheets = listconSheets.filter(function (item) {
                     return item["BOOKING/TÀU"] == d.fBooking.trim() ;
 
                     
@@ -218,15 +218,24 @@ function createControl() {
 
 
     }
+  
     function colView() {
         var d = getFilter();
         var columns =
              [
                 {
+                    field: "STT", title: "STT", width: "10px",
+                    headerAttributes:
+                    { style: "text-align: center; font-weight: bold;white-space: normal" },
+                    attributes: { style: "text-align:center;" },
+                    template: "<a href=\"javascript:; \"  onclick=\"LoadReportDetail('#=STT#')\" >#=STT# </a>",
+                },
+                {
                     field: "['HĐ NGOẠI']", title: "HĐ NGOẠI", width: "20px",
                     headerAttributes:
                     { style: "text-align: center; font-weight: bold;white-space: normal" },
-                    attributes: { style: "text-align:center;" }
+                    attributes: { style: "text-align:center;" },
+                   
                 },
                 {
                    field: "['LOẠI HÀNG']", title: "LOẠI HÀNG", width: "20px",
@@ -259,7 +268,7 @@ function createControl() {
                    attributes: { style: "text-align:center;" }
                },
                {
-                   field: "['GHI CHÚ']", title: "GHI CHÚ", width: "20px",
+                   field: "['GHI CHÚ']", title: "GHI CHÚ", width: "60px",
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal" },
                    attributes: { style: "text-align:center;" }
@@ -270,67 +279,19 @@ function createControl() {
                    { style: "text-align: center; font-weight: bold;white-space: normal" },
                    attributes: { style: "text-align:center;" }
                },
+               {
+                field: "SheetName", title: "Sheet", width: "20px",
+                headerAttributes:
+                { style: "text-align: center; font-weight: bold;white-space: normal" },
+                attributes: { style: "text-align:center;" }
+            },
            
             
             
              ]
         return columns;
     }
-    function colViewAssignReport() {
-        var d = getFilter();
-        var columns =
-            [
-            {
-                field: "STT", title: "STT", width: "50px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
-                field: "SubParentDescVN", title: "Vùng", width: "50px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
-                field: "DescriptionVN", title: "Tỉnh thành", width: "50px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
-                field: "District", title: "Quận(Huyện)", width: "50px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-            {
-                field: "Ward", title: "Phường(Xã)", width: "50px",
-                headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
-                attributes: { style: "text-align:center;" }
-            },
-             {
-                 field: "Street", title: "Tuyến đường", width: "50px",
-                 headerAttributes:
-                 { style: "text-align: center; font-weight: bold;white-space: normal" },
-                 attributes: { style: "text-align:center;" }
-             },
-                {
-                    field: "Name", title: "Acc phụ trách", width: "50px",
-                    headerAttributes:
-                    { style: "text-align: center; font-weight: bold;white-space: normal" },
-                    attributes: { style: "text-align:center;" }
-                },
-                {
-                    field: "CreateBy", title: "Acc-Thời gian cập nhật", width: "50px",
-                    headerAttributes:
-                    { style: "text-align: center; font-weight: bold;white-space: normal" },
-                    attributes: { style: "text-align:center;" }
-                },
-            ]
-        return columns;
-    }
+  
 }
 
 
@@ -349,6 +310,35 @@ function getFilter() {
 
     }
     return filter;
+}
+function LoadReportDetail(id) {
+     
+      
+    var tabstrip = $('#tabstrip').data('kendoTabStrip');
+    tabstrip.select(2);
+    tabstrip.enable(tabstrip.select(), true);
+    
+    
+
+    if(id != '')
+    {
+        
+     listconSheets = listall.filter(function (item) {
+        return item.STT == id ;
+    });
+  }
+   console.log(listconSheets[0]["KHO ĐÓNG"]);
+    $("#txtHDNgoai").val(listconSheets[0]["HĐ NGOẠI"]);
+    $("#txtLoaiHang").val(listconSheets[0]["LOẠI HÀNG"]);
+    $("#txtSoLuong").val(listconSheets[0]["SỐ LƯỢNG"]);
+    $("#txtKhoDong").val(listconSheets[0]["KHO ĐÓNG"]);
+    $("#txtTienDoKho").val(listconSheets[0]["TIẾN ĐỘ KHO"]);
+    $("#txtBooking").val(listconSheets[0]["BOOKING/TÀU"]);
+    $("#txtGhiChu").val(listconSheets[0]["GHI CHÚ"]);
+    $("#txtGiamDinh").val(listconSheets[0]["GIÁM ĐỊNH"]);
+    $("#txtSheet").val(listconSheets[0]["SheetName"]);
+    
+
 }
 function ExportExcel() {
     var grid = $("#gridReport").data("kendoGrid");
