@@ -163,7 +163,7 @@ function createControl() {
         var options = grid.options;
         options.columns = colView();
         $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbyEr3zRWkxifOkYdboVOyU2Mhaa3DDu4gbm1JO4uw-JGqvTXUfgXqhDcMCxwrpHgh3f6g/exec',
+            url: 'https://script.google.com/macros/s/AKfycbzymFygB_3iVS8lcyw0qYvX-cawdp8FtaqUjVYQ6MXCyLRMzYohK-Ccj-0bRqVH2Jt_aw/exec',
             beforeSend: function () {
                 $('.ViewLoader1').css("display", "block");
             },
@@ -171,7 +171,7 @@ function createControl() {
                 $('.ViewLoader1').css("display", "none");
             },
             success: function (result) {
-    
+    console.log(result);
                 listall = result;
               
                 var listconSheets = listall;
@@ -179,26 +179,28 @@ function createControl() {
                 {
                     
                 var listconSheets = listall.filter(function (item) {
-                    return item.Sheet == d.fSheets ;
+                    return item.Sheet == d.fSheets.trim() ;
                 });
                 }
                 if(d.fContract != '')
                 {
                     
                 var listconSheets = listconSheets.filter(function (item) {
-                    return item["HỢP ĐỒNG NGOẠI"] == d.fContract ;
+                    return item["HỢP ĐỒNG NGOẠI"] == d.fContract.trim() ;
+
+                    
                 });
                 }
-                if(d.fSheets != '')
+                if(d.fBooking != '')
                 {
                     
                 var listconSheets = listconSheets.filter(function (item) {
-                    return item["TÀU"] == d.fBooking ;
+                    return item["BOOKING/TÀU"] == d.fBooking.trim() ;
+
+                    
                 });
                 }
-
-        
-     
+   
         var dataSource = new kendo.data.DataSource({
             data: listconSheets,
             pageSize: 100,
