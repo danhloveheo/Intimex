@@ -224,63 +224,63 @@ function createControl() {
         var columns =
              [
                 {
-                    field: "STT", title: "STT", width: "10px",
+                    field: "STT", title: "STT", width: "35px",
                     headerAttributes:
                     { style: "text-align: center; font-weight: bold;white-space: normal" },
                     attributes: { style: "text-align:center;" },
                     template: "<a href=\"javascript:; \"  onclick=\"LoadReportDetail('#=STT#')\" >#=STT# </a>",
                 },
                 {
-                    field: "['HĐ NGOẠI']", title: "HĐ NGOẠI", width: "20px",
+                    field: "['HĐ NGOẠI']", title: "HĐ NGOẠI",
                     headerAttributes:
                     { style: "text-align: center; font-weight: bold;white-space: normal" },
                     attributes: { style: "text-align:center;" },
                    
                 },
                 {
-                   field: "['LOẠI HÀNG']", title: "LOẠI HÀNG", width: "20px",
+                   field: "['LOẠI HÀNG']", title: "LOẠI HÀNG",
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                   field: "['SỐ LƯỢNG']", title: "SỐ LƯỢNG", width: "20px",
+                   field: "['SỐ LƯỢNG']", title: "SỐ LƯỢNG", 
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                   field: "['KHO ĐÓNG']", title: "KHO ĐÓNG", width: "20px",
+                   field: "['KHO ĐÓNG']", title: "KHO ĐÓNG", 
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                   field: "['TIẾN ĐỘ KHO']", title: "TIẾN ĐỘ KHO", width: "20px",
+                   field: "['TIẾN ĐỘ KHO']", title: "TIẾN ĐỘ KHO", 
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                   field: "['BOOKING/TÀU']", title: "TÀU", width: "20px",
+                   field: "['BOOKING/TÀU']", title: "TÀU",
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                   field: "['GHI CHÚ']", title: "GHI CHÚ", width: "60px",
+                   field: "['GHI CHÚ']", title: "GHI CHÚ", 
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                   field: "['GIÁM ĐỊNH']", title: "GIÁM ĐỊNH", width: "20px",
+                   field: "['GIÁM ĐỊNH']", title: "GIÁM ĐỊNH", 
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                field: "SheetName", title: "Sheet", width: "20px",
+                field: "SheetName", title: "Sheet",
                 headerAttributes:
                 { style: "text-align: center; font-weight: bold;white-space: normal" },
                 attributes: { style: "text-align:center;" }
