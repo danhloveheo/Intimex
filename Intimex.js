@@ -163,7 +163,7 @@ function createControl() {
         var options = grid.options;
         options.columns = colView();
         $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycby6v3GHa57L9vZolg3WVDx707S0FVnMf-TNXpjI3opPPfjzX0uLvZnrXgPyC84mUFDOgg/exec',
+            url: 'https://script.google.com/macros/s/AKfycbyEr3zRWkxifOkYdboVOyU2Mhaa3DDu4gbm1JO4uw-JGqvTXUfgXqhDcMCxwrpHgh3f6g/exec',
             beforeSend: function () {
                 $('.ViewLoader1').css("display", "block");
             },
