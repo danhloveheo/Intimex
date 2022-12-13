@@ -182,6 +182,20 @@ function createControl() {
                     return item.Sheet == d.fSheets ;
                 });
                 }
+                if(d.fContract != '')
+                {
+                    
+                var listconSheets = listall.filter(function (item) {
+                    return item["HỢP ĐỒNG NGOẠI"] == d.fContract ;
+                });
+                }
+                if(d.fSheets != '')
+                {
+                    
+                var listconSheets = listall.filter(function (item) {
+                    return item["TÀU"] == d.fBooking ;
+                });
+                }
 
         
      
