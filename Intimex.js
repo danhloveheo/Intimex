@@ -207,7 +207,7 @@ function createControl() {
         var columns =
              [
              {
-                 field: "['HĐ NGOẠI']", title: "HỢP ĐỒNG NGOẠI", width: "20px",
+                 field: "['HĐ NGOẠI']", title: "HĐ NGOẠI", width: "20px",
                  headerAttributes:
                  { style: "text-align: center; font-weight: bold;white-space: normal" },
                  attributes: { style: "text-align:center;" }
@@ -243,7 +243,7 @@ function createControl() {
                 attributes: { style: "text-align:center;" }
             },
             {
-                field: "['TÀU']", title: "TÀU", width: "20px",
+                field: "['BOOKING/TÀU']", title: "TÀU", width: "20px",
                 headerAttributes:
                 { style: "text-align: center; font-weight: bold;white-space: normal" },
                 attributes: { style: "text-align:center;" }
