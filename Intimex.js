@@ -185,14 +185,14 @@ function createControl() {
                 if(d.fContract != '')
                 {
                     
-                var listconSheets = listall.filter(function (item) {
+                var listconSheets = listconSheets.filter(function (item) {
                     return item["HỢP ĐỒNG NGOẠI"] == d.fContract ;
                 });
                 }
                 if(d.fSheets != '')
                 {
                     
-                var listconSheets = listall.filter(function (item) {
+                var listconSheets = listconSheets.filter(function (item) {
                     return item["TÀU"] == d.fBooking ;
                 });
                 }
