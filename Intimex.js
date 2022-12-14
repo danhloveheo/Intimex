@@ -163,7 +163,7 @@ function createControl() {
         var options = grid.options;
         options.columns = colView();
         $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbzlQEDfV-SmW4mYpAt99Gc1Qi_S6Tvp-5YcdMAX9tK7SaNJvjjgkPepUM8eGhXeS-1DpQ/exec',
+            url: 'https://script.google.com/macros/s/AKfycbyaT_5evfDQ8GrWb3OH8aFyEwMlIEBbw9r6YyQgJg8ZQNlAf3GdesPO4K7yqLIWogEcuQ/exec',
             beforeSend: function () {
                 $('.ViewLoader1').css("display", "block");
             },
@@ -185,19 +185,19 @@ function createControl() {
                 if(d.fContract != '')
                 {
                     
-                 listconSheets = listconSheets.filter(function (item) {
-                    return item["HĐ NGOẠI"] == d.fContract.trim() ;
-
+               
+                    listconSheets = listconSheets.filter(function (item) {
+                        return item["HĐ NGOẠI"].indexOf(d.fContract.trim()) != -1 ;
                     
                 });
                 }
                 if(d.fBooking != '')
                 {
                     
-                 listconSheets = listconSheets.filter(function (item) {
-                    return item["BOOKING/TÀU"] == d.fBooking.trim() ;
+            
 
-                    
+                    listconSheets = listconSheets.filter(function (item) {
+                        return item["BOOKING/TÀU"].indexOf(d.fBooking.trim()) != -1 ;
                 });
                 }
    
