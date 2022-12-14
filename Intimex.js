@@ -75,7 +75,16 @@ function createControl() {
         resizable: true,
         scrollable: true,
         //  reorderable: true,
-       
+        pageable: {
+        
+            buttonCount: 5,
+            pageSize: 500,
+            messages: {
+                itemsPerPage: "dòng / trang",
+                display: "Hiển thị {0} - {1} / {2}",
+                empty: "Không tìm thấy dữ liệu"
+            }
+        },
         selectable: true,
         filterable: {
             extra: false,
@@ -92,54 +101,7 @@ function createControl() {
    
 
    
-    function LoadAssignReport() {
-        var d = getFilter();
-        var tabstrip = $('#tabstrip').data('kendoTabStrip');
-        tabstrip.select(2);
-        tabstrip.enable(tabstrip.select(), true);
-        var grid = $('#gridReport').data("kendoGrid");
-        var options = grid.options;
-        options.columns = colViewAssignReport();
-        $.ajax({
-            url: '/Contract/StaffLocationAssign/LoadViewAssignReport',
-            data: {
-
-                fSub: d.fSub,
-                fLocation: d.fLocation,
-                fDistrict: d.fDistrict,
-                fWard: d.fWard,
-                fStreet: d.fStreet,
-                fStatusAssign: d.fStatusAssign,
-                fStaff: d.fStaff
-
-            },
-
-            beforeSend: function () {
-                $('.ViewLoader2').css('display', 'block');
-                kendo.ui.progress($('#gridAssign'), true);
-            },
-            complete: function () {
-                $('.ViewLoader2').css('display', 'none');
-                kendo.ui.progress($('#gridAssign'), false);
-            },
-            success: function (data) {
-
-                var dataSource = new kendo.data.DataSource({
-                    data: data.ds,
-                    pageSize: 2000,
-                });
-                options.dataSource = dataSource;
-                $('#gridReport').empty().kendoGrid(options);
-                $('#gridReport').data("kendoGrid").refresh();
-
-            },
-            error: function (error) {
-                alert('errror: ' + error);
-            }
-        });
-
-
-    }
+   
 
     function LoadReport() {
         var d = getFilter();
@@ -151,7 +113,7 @@ function createControl() {
         var options = grid.options;
         options.columns = colView();
         $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbyaT_5evfDQ8GrWb3OH8aFyEwMlIEBbw9r6YyQgJg8ZQNlAf3GdesPO4K7yqLIWogEcuQ/exec',
+            url: 'https://script.google.com/macros/s/AKfycbwpFawF5msuDtSkSrccxVlN5GsxuHH8vuJhE6w4x3RALvq8333PBMVIGWk6_ChN9k5q9Q/exec',
             beforeSend: function () {
                 $('.ViewLoader1').css("display", "block");
             },
@@ -163,12 +125,26 @@ function createControl() {
                 listall = result;
               
                 var listconSheets = listall;
+                var arrSheet = [];
+                var myArray = d.fSheets.split(",");
+                for(var i =0;i<myArray.length;i++)
+                {
+
+                    arrSheet.push(myArray[i]);
+                }
                 if(d.fSheets != '')
                 {
                     
-                 listconSheets = listall.filter(function (item) {
-                    return item.Sheet == d.fSheets.trim() ;
-                });
+             
+                    listconSheets = listconSheets.filter(function(item) {
+                      return arrSheet.indexOf(item["Sheet"]) != -1
+                    })
+
+                    
+                    
+                 
+
+
                 }
                 if(d.fContract != '')
                 {
@@ -191,7 +167,7 @@ function createControl() {
    
         var dataSource = new kendo.data.DataSource({
             data: listconSheets,
-            pageSize: 100,
+            pageSize: 500,
         });
         options.dataSource = dataSource;
         $('#gridReport').empty().kendoGrid(options);
@@ -222,56 +198,56 @@ function createControl() {
                     field: "['HĐ NGOẠI']", title: "HĐ NGOẠI",
                     headerAttributes:
                     { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
-                    attributes: { style: "text-align:center;" },
+                    attributes: { style: "text-align:center;font-size:12px" },
                    
                 },
                 {
                    field: "['LOẠI HÀNG']", title: "LOẠI HÀNG", width: "90px",
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
-                   attributes: { style: "text-align:center;" }
+                   attributes: { style: "text-align:center;font-size:12px" }
                },
                {
                    field: "['SỐ LƯỢNG']", title: "SỐ LƯỢNG",  width: "90px",
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
-                   attributes: { style: "text-align:center;" }
+                   attributes: { style: "text-align:center;font-size:12px" }
                },
                {
                    field: "['KHO ĐÓNG']", title: "KHO ĐÓNG", 
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
-                   attributes: { style: "text-align:center;" }
+                   attributes: { style: "text-align:center;font-size:12px" }
                },
                {
                    field: "['TIẾN ĐỘ KHO']", title: "TIẾN ĐỘ KHO", 
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
-                   attributes: { style: "text-align:center;" }
+                   attributes: { style: "text-align:center;font-size:12px" }
                },
                {
                    field: "['BOOKING/TÀU']", title: "TÀU",
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
-                   attributes: { style: "text-align:center;" }
+                   attributes: { style: "text-align:center;font-size:12px" }
                },
                {
                    field: "['GHI CHÚ']", title: "GHI CHÚ", 
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
-                   attributes: { style: "text-align:center;" }
+                   attributes: { style: "text-align:center;font-size:12px" }
                },
                {
                    field: "['GIÁM ĐỊNH']", title: "GIÁM ĐỊNH", width: "90px",
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
-                   attributes: { style: "text-align:center;" }
+                   attributes: { style: "text-align:center;font-size:12px" }
                },
                {
                 field: "SheetName", title: "NGƯỜI PHỤ TRÁCH",width: "90px",
                 headerAttributes:
                 { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
-                attributes: { style: "text-align:center;" }
+                attributes: { style: "text-align:center;font-size:12px" }
             },
            
             
