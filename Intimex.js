@@ -232,7 +232,7 @@ function createControl() {
                    attributes: { style: "text-align:center;font-size:12px" }
                },
                {
-                   field: "['GHI CHÚ']", title: "GHI CHÚ", 
+                   field: "['GHI CHÚ']", title: "GHI CHÚ",  width: "500px",
                    headerAttributes:
                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                    attributes: { style: "text-align:center;font-size:12px" }
