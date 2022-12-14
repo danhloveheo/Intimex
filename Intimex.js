@@ -280,7 +280,7 @@ function createControl() {
                    attributes: { style: "text-align:center;" }
                },
                {
-                field: "SheetName", title: "Sheet",
+                field: "SheetName", title: "NGƯỜI PHỤ TRÁCH",
                 headerAttributes:
                 { style: "text-align: center; font-weight: bold;white-space: normal" },
                 attributes: { style: "text-align:center;" }
