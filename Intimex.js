@@ -214,63 +214,63 @@ function createControl() {
                 {
                     field: "STT", title: "STT", width: "45px",
                     headerAttributes:
-                    { style: "text-align: center; font-weight: bold;white-space: normal" },
-                    attributes: { style: "text-align:center;" },
+                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:14px" },
+                    attributes: { style: "text-align:center;font-size:14px" },
                     template: "<a href=\"javascript:; \"  onclick=\"LoadReportDetail('#=STT#')\" >#=STT# </a>",
                 },
                 {
                     field: "['HĐ NGOẠI']", title: "HĐ NGOẠI",
                     headerAttributes:
-                    { style: "text-align: center; font-weight: bold;white-space: normal" },
+                    { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                     attributes: { style: "text-align:center;" },
                    
                 },
                 {
-                   field: "['LOẠI HÀNG']", title: "LOẠI HÀNG",
+                   field: "['LOẠI HÀNG']", title: "LOẠI HÀNG", width: "90px",
                    headerAttributes:
-                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                   field: "['SỐ LƯỢNG']", title: "SỐ LƯỢNG", 
+                   field: "['SỐ LƯỢNG']", title: "SỐ LƯỢNG",  width: "90px",
                    headerAttributes:
-                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                    attributes: { style: "text-align:center;" }
                },
                {
                    field: "['KHO ĐÓNG']", title: "KHO ĐÓNG", 
                    headerAttributes:
-                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                    attributes: { style: "text-align:center;" }
                },
                {
                    field: "['TIẾN ĐỘ KHO']", title: "TIẾN ĐỘ KHO", 
                    headerAttributes:
-                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                    attributes: { style: "text-align:center;" }
                },
                {
                    field: "['BOOKING/TÀU']", title: "TÀU",
                    headerAttributes:
-                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                    attributes: { style: "text-align:center;" }
                },
                {
                    field: "['GHI CHÚ']", title: "GHI CHÚ", 
                    headerAttributes:
-                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                   field: "['GIÁM ĐỊNH']", title: "GIÁM ĐỊNH", 
+                   field: "['GIÁM ĐỊNH']", title: "GIÁM ĐỊNH", width: "90px",
                    headerAttributes:
-                   { style: "text-align: center; font-weight: bold;white-space: normal" },
+                   { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                    attributes: { style: "text-align:center;" }
                },
                {
-                field: "SheetName", title: "NGƯỜI PHỤ TRÁCH",
+                field: "SheetName", title: "NGƯỜI PHỤ TRÁCH",width: "90px",
                 headerAttributes:
-                { style: "text-align: center; font-weight: bold;white-space: normal" },
+                { style: "text-align: center; font-weight: bold;white-space: normal;font-size:11px" },
                 attributes: { style: "text-align:center;" }
             },
            
