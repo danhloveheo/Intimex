@@ -75,19 +75,7 @@ function createControl() {
         resizable: true,
         scrollable: true,
         //  reorderable: true,
-      
-   
-        selectable: true,
-        pageable: {
-            refresh: true,
-            buttonCount: 5,
-            pageSize: 140,
-            messages: {
-                itemsPerPage: "dòng / trang",
-                display: "Hiển thị {0} - {1} / {2}",
-                empty: "Không tìm thấy dữ liệu"
-            }
-        },
+       
         selectable: true,
         filterable: {
             extra: false,
@@ -138,7 +126,7 @@ function createControl() {
 
                 var dataSource = new kendo.data.DataSource({
                     data: data.ds,
-                    pageSize: 500,
+                    pageSize: 2000,
                 });
                 options.dataSource = dataSource;
                 $('#gridReport').empty().kendoGrid(options);
@@ -224,7 +212,7 @@ function createControl() {
         var columns =
              [
                 {
-                    field: "STT", title: "STT", width: "35px",
+                    field: "STT", title: "STT", width: "45px",
                     headerAttributes:
                     { style: "text-align: center; font-weight: bold;white-space: normal" },
                     attributes: { style: "text-align:center;" },
