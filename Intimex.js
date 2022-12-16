@@ -1,24 +1,116 @@
 ﻿$(document).ready(function () {
   
     getListSheets();
+    getListData1();
+	getListData2();
+	getListData3();
+	getListData4();
     
-   
 });
 var listSheets = [];
 var listconSheets ;
-
-
+var listdata1 = [];
+var listdata2 = [];
+var listdata3 = [];
+var listdata4 = [];
 function getListSheets() {
 
     $.ajax({
+	
         url: 'https://script.google.com/macros/s/AKfycby0lkeSUIVsYv1-ha8QUqlG_RXABCjpW1MbQCbNNelvJTlbkYwQ1zPG-ZU0ecpkwyB5Lg/exec',
         success: function (result) {
 
             listSheets = result;
+           console.log("--");
+            console.log(result);
             console.log("--");
-            console.log(listSheets);
+          
+        },
+        error: function () {
+            console.log("err");
+
+        }
+    });
+}
+
+function getListData1() {
+  console.log("data1");
+    $.ajax({
+
+        url: 'https://script.google.com/macros/s/AKfycbwIBZBXmK5NHNf-bhrjXYV1UTNT5mrSJda9-z2J7XQPPrjXStOznr4uHXK1Q3utMAbJcA/exec',
+		
+        success: function (result) {
+
+            listdata1 = result;
             console.log("--");
-            createControl();
+            console.log(result);
+            console.log("--");
+           
+        },
+        error: function () {
+            console.log("err");
+
+        }
+    });
+}
+function getListData2() {
+   console.log("data2");
+    $.ajax({
+
+        url: 'https://script.google.com/macros/s/AKfycbxyhUKzb9wDY9VCKwVCooO-qf5caAJedqF-pdVZr6Bfx5rN5acfeL5ljaKLYGTn7MTr8g/exec',
+		
+        success: function (result) {
+
+            listdata2 = result;
+            console.log("--");
+            console.log(result);
+            console.log("--");
+           
+        },
+        error: function () {
+            console.log("err");
+
+        }
+    });
+}
+function getListData3() {
+  console.log("data3");
+    $.ajax({
+
+        url: 'https://script.google.com/macros/s/AKfycbyO5K6BZd8G3KpZHdo1JwABtWIuN2BRNvZo1WAfmO41JCU7Qq4rT97zseiZYAXamULefw/exec',
+		
+        success: function (result) {
+
+            listdata3 = result;
+            console.log("--");
+            console.log(result);
+            console.log("--");
+           
+        },
+        error: function () {
+            console.log("err");
+
+        }
+    });
+}
+function getListData4() {
+  console.log("data4");
+    $.ajax({
+	 
+        url: 'https://script.google.com/macros/s/AKfycbytHHMkebAGfUmuuxbLUt5aQw05SDqKEELGEWNhQYl6T72JUtomOuCeoNrG2M776WNWJw/exec',
+		 beforeSend: function () {
+                $('.ViewLoader1').css("display", "block");
+            },
+            complete: function () {
+                $('.ViewLoader1').css("display", "none");
+            },
+        success: function (result) {
+			
+            listdata4 = result;
+            console.log("--");
+            console.log(result);
+            console.log("--");
+           createControl();
         },
         error: function () {
             console.log("err");
@@ -112,19 +204,9 @@ function createControl() {
         var grid = $('#gridReport').data("kendoGrid");
         var options = grid.options;
         options.columns = colView();
-        $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbwpFawF5msuDtSkSrccxVlN5GsxuHH8vuJhE6w4x3RALvq8333PBMVIGWk6_ChN9k5q9Q/exec',
-            beforeSend: function () {
-                $('.ViewLoader1').css("display", "block");
-            },
-            complete: function () {
-                $('.ViewLoader1').css("display", "none");
-            },
-            success: function (result) {
-    console.log(result);
-                listall = result;
+       
               
-                var listconSheets = listall;
+                var listconSheets = listdata1.concat(listdata2.concat(listdata3.concat(listdata4)));
                 var arrSheet = [];
                 var myArray = d.fSheets.split(",");
                 for(var i =0;i<myArray.length;i++)
@@ -171,13 +253,6 @@ function createControl() {
         });
         options.dataSource = dataSource;
         $('#gridReport').empty().kendoGrid(options);
-             
-            },
-            error: function () {
-                console.log("err");
-    
-            }
-        });
       
 
 
@@ -192,7 +267,7 @@ function createControl() {
                     headerAttributes:
                     { style: "text-align: center; font-weight: bold;white-space: normal;font-size:14px" },
                     attributes: { style: "text-align:center;font-size:14px" },
-                    template: "<a href=\"javascript:; \"  onclick=\"LoadReportDetail('#=STT#')\" >#=STT# </a>",
+                    template: "<a href=\"javascript:; \"  onclick=\"LoadReportDetail('#=STT#','#=SheetName#')\" >#=STT# </a>",
                 },
                 {
                     field: "['HĐ NGOẠI']", title: "HĐ NGOẠI",
@@ -275,7 +350,7 @@ function getFilter() {
     }
     return filter;
 }
-function LoadReportDetail(id) {
+function LoadReportDetail(id,sheetname) {
      
       
     var tabstrip = $('#tabstrip').data('kendoTabStrip');
@@ -287,8 +362,8 @@ function LoadReportDetail(id) {
     if(id != '')
     {
         
-     listconSheets = listall.filter(function (item) {
-        return item.STT == id ;
+     listconSheets = listdata1.concat(listdata2.concat(listdata3.concat(listdata4))).filter(function (item) {
+        return item.STT == id && item.SheetName == sheetname ;
     });
   }
    console.log(listconSheets[0]["KHO ĐÓNG"]);
