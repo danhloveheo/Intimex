@@ -4,7 +4,7 @@
     getListData1();
 	getListData2();
 	getListData3();
-	getListData4();
+	//getListData4();
     
 });
 var listSheets = [];
@@ -85,6 +85,7 @@ function getListData3() {
             console.log("--");
             console.log(result);
             console.log("--");
+			  createControl();
            
         },
         error: function () {
@@ -110,7 +111,7 @@ function getListData4() {
             console.log("--");
             console.log(result);
             console.log("--");
-           createControl();
+         
         },
         error: function () {
             console.log("err");
@@ -206,7 +207,7 @@ function createControl() {
         options.columns = colView();
        
               
-                var listconSheets = listdata1.concat(listdata2.concat(listdata3.concat(listdata4)));
+                var listconSheets = listdata1.concat(listdata2.concat(listdata3));
                 var arrSheet = [];
                 var myArray = d.fSheets.split(",");
                 for(var i =0;i<myArray.length;i++)
@@ -362,7 +363,7 @@ function LoadReportDetail(id,sheetname) {
     if(id != '')
     {
         
-     listconSheets = listdata1.concat(listdata2.concat(listdata3.concat(listdata4))).filter(function (item) {
+     listconSheets = listdata1.concat(listdata2.concat(listdata3)).filter(function (item) {
         return item.STT == id && item.SheetName == sheetname ;
     });
   }
